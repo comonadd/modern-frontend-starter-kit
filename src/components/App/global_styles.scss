@@ -1,0 +1,50 @@
+/**
+ * The global styles.
+ *
+ * @author Dmitry Guzeev <dmitry.guzeev@yahoo.com>
+ * @copyright 2017
+ * @license MIT
+ */
+
+@import "vars";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: $body___background-color;
+  font: $body___font;
+  color: $body___color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading___font-family;
+  font-weight: $heading___font-weight;
+  color: $heading___color;
+}
+
+p {
+  line-height: $paragraph___line-height;
+  margin: $paragraph___margin;
+}
+
+a {
+  color: $link___color;
+  text-decoration: $link___text-decoration;
+
+  &:hover {
+    color: $link_hover___color;
+  }
+
+  &:focus {
+    color: $link_focus___color;
+  }
+}

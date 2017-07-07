@@ -1,0 +1,47 @@
+// The variables used across the application style files.
+//
+// @author Dmitry Guzeev <dmitry.guzeev@yahoo.com>
+// @copyright 2017
+// @license MIT
+
+/* Colors palette */
+$colors__juniper: #729f98;
+$colors__greeny: #283018;
+$colors__orange: #aa863a;
+$colors__white: #f0eceb;
+
+/* Body settings */
+$body___background-color: #fff;
+$body___font: 16px "Arial", "sans-serif";
+$body___color: #555;
+
+/* Heading settings ("h[1-6]" tags) */
+$heading___font-family: "Arial";
+$heading___font-weight: 300;
+$heading___color: #333;
+
+/* Paragraph settings ("p" tags) */
+$paragraph___line-height: 28px;
+$paragraph___margin: 0 0 25px 0;
+
+/* Link settings ("a" tags) */
+$link___color: $colors__juniper;
+$link___text-decoration: none;
+$link_hover___color: darken($link___color, 10%);
+$link_focus___color: darken($link___color, 15%);
+
+/* Header */
+$header___background: #fff;
+$header___height: 80px;
+$header___border-bottom: 1px solid #eee;
+$header__logotype___color: $colors__greeny;
+$header__logotype___font-size: 24px;
+$header__nav__mobile__items___background: #fff;
+$header__nav__desktop__item___width: 80px;
+$header__nav__desktop___margin: 0 32px;
+
+/* Footer */
+$footer___height: 256px;
+$footer___background: #fff;
+$footer___color: inherit;
+$footer___border-top: 1px solid #eee;

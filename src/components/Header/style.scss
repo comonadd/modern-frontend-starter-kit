@@ -1,0 +1,123 @@
+/**
+ * The style for the `Header` component.
+ *
+ * @author Dmitry Guzeev <dmitry.guzeev@yahoo.com>
+ * @copyright 2017
+ * @license MIT
+ */
+
+@import "vars";
+@import "~include-media/dist/_include-media.scss";
+
+/* The header */
+.header {
+  position: relative;
+  display: flex;
+  width: 100%;
+  line-height: $header___height;
+  background: $header___background;
+  border-bottom: $header___border-bottom;
+  flex-basis: $header___height;
+  flex-shrink: 0;
+  justify-content: space-between;
+  padding: 16px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+
+  /* The logotype */
+  &__logotype {
+    $font-size: 24px;
+    $line-height: $font-size + 6;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $font-size;
+    font-weight: bold;
+    color: $header__logotype___color;
+    line-height: $line-height;
+
+    @include media(">phone", "<=tablet") {
+      font-size: 16px;
+    }
+  }
+
+  /* The navigation */
+  &__nav {
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+
+    &.active {
+      .header__nav__items {
+        display: flex;
+      }
+    }
+
+    /* The navigation items */
+    &__items {
+      display: flex;
+      flex-grow: 1;
+      flex-shrink: 0;
+
+      @include media(">phone", "<=tablet") {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: $header___height;
+        left: 0;
+        z-index: 9999;
+        background: $body___background-color;
+        flex-direction: column;
+        overflow: hidden;
+
+        &__item {
+          border-bottom: 1px solid #eee;
+
+          > a {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      /* The navigation item */
+      &__item {
+        font-size: 16px;
+        margin: 0 8px;
+        text-align: center;
+        display: flex;
+      }
+    }
+
+    /* The mobile menu button */
+    &__mobile-menu-btn {
+      $width: 48px;
+
+      display: none;
+      justify-content: center;
+      align-items: center;
+      color: $body___color;
+      width: $width;
+
+      &:hover {
+        color: lighten($body___color, 10%);
+        cursor: pointer;
+      }
+
+      &:focus {
+        color: lighten($body___color, 15%);
+      }
+
+      &:active {
+        color: darken($body___color, 15%);
+      }
+
+      @include media(">phone", "<=tablet") {
+        display: flex;
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+/**
+ * The style brief description.
+ *
+ *  The style long description.
+ *
+ *  @author Dmitry Guzeev <dmitry.guzeev@yahoo.com>
+ *  @copyright 2017
+ *  @license MIT
+ */
+
+@import "vars";
+
+/* The footer */
+.footer {
+  clear: both;
+  display: flex;
+  color: $footer___color;
+  background: $footer___background;
+  border-top: $footer___border-top;
+  z-index: 1;
+  flex-basis: $footer___height;
+  align-items: center;
+  justify-content: space-around;
+  padding: 80px 0;
+
+  /* The footer section */
+  &__section {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2%;
+    height: 100%;
+
+    /* The footer section title */
+    &__title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 0;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* The footer section content */
+    &__content {
+      text-align: center;
+    }
+  }
+}
