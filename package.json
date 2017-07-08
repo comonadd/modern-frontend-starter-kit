@@ -52,6 +52,7 @@
     "@types/react-responsive": "^1.1.7",
     "@types/react-router-dom": "^4.0.5",
     "@types/react-router-redux": "^5.0.3",
+    "@types/webpack": "^3.0.1",
     "awesome-typescript-loader": "^3.2.1",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
