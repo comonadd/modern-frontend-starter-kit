@@ -67,7 +67,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
       <div className={navClassnames}>
         <div className={style.header__nav__items}>
           {Navigation.items.map((item: ItemProps) =>
-            <Item {...item} />
+            <Item key={item.url} {...item} />
           )}
         </div>
         <div className={style.header__nav__mobileMenuBtn} onClick={this.toggleMobileNavigation}>

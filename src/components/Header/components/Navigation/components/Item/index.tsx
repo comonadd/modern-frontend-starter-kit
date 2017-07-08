@@ -21,7 +21,7 @@ export interface ItemProps {
  * @return {React.Component}
  */
 export default (props: ItemProps) =>
-  <div key={props.url} className={style.header__nav__items__item}>
+  <div className={style.header__nav__items__item}>
     {props.rel ? <Link to={props.url}>{props.name}</Link> :
      <a href={props.url}>{props.name}</a>}
   </div>;
