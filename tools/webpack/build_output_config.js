@@ -15,4 +15,5 @@ module.exports = buildModeConfig => ({
   path: buildModeConfig.outDirPath,
   filename: buildModeConfig.outputFilename,
   chunkFilename: buildModeConfig.outputChunkFilename,
+  publicPath: buildModeConfig.publicPath,
 });
