@@ -12,19 +12,19 @@ module.exports = karmaConfig => karmaConfig.set({
   basePath: config.rootDirPath,
 
   // Browsers to use
-  browsers: ['PhantomJs'],
+  browsers: ['PhantomJS2'],
 
   // Testing frameworks to use
   frameworks: ['mocha', 'chai'],
 
   // Tests entry points
   files: [
-    config.testsEntryFilePath,
+    'src/**/*.spec.tsx',
   ],
 
   // Preprocessors to use for each test file
   preprocessors: {
-    [config.testsEntryFilePath]: ['webpack', 'sourcemap'],
+    'src/**/*.spec.tsx': ['webpack', 'sourcemap'],
   },
 
   // Reporters
@@ -34,6 +34,16 @@ module.exports = karmaConfig => karmaConfig.set({
   nyanReporter: {
     suppressErrorHighlighting: true,
   },
+
+  // Plugins to load
+  plugins: [
+    'karma-mocha',
+    'karma-phantomjs2-launcher',
+    'karma-sourcemap-loader',
+    'karma-webpack',
+    'karma-nyan-reporter',
+    'karma-chai',
+  ],
 
   // Webpack preprocessor configuration
   webpack: buildWebpackConfig(constants.buildMode.TESTS),

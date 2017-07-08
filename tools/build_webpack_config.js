@@ -16,6 +16,7 @@ const buildPluginsArray = require('./webpack/build_plugins_array');
 const buildModuleConfig = require('./webpack/build_module_config');
 const buildResolveConfig = require('./webpack/build_resolve_config');
 const buildStatsConfig = require('./webpack/build_stats_config');
+const buildExternalsConfig = require('./webpack/build_externals_config');
 
 /**
  * @summary
@@ -39,6 +40,9 @@ const buildWebpackConfigWithBuildConfig = buildModeConfig => ({
 
   // Webpack resolve configuration
   resolve: buildResolveConfig(buildModeConfig),
+
+  // Externals
+  externals: buildExternalsConfig(buildModeConfig),
 
   // The Webpack context
   context: config.srcDirPath,
