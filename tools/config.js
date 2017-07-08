@@ -76,6 +76,7 @@ const DEV_BUILD_TYPE_CONFIG = {
   test: false,
   indexHtmlAtRootDir: false,
   liveReload: false,
+  publicPath: '/',
 };
 
 /**
@@ -104,6 +105,7 @@ const RELEASE_BUILD_TYPE_CONFIG = {
   test: false,
   indexHtmlAtRootDir: true,
   liveReload: false,
+  publicPath: '/',
 };
 
 const TESTS_BUILD_TYPE_CONFIG = {
@@ -116,6 +118,7 @@ const TESTS_BUILD_TYPE_CONFIG = {
   test: true,
   indexHtmlAtRootDir: false,
   liveReload: true,
+  publicPath: '/',
 };
 
 /**
