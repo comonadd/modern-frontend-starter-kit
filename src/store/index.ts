@@ -19,43 +19,43 @@ import {
 
 import initialState from './initial_state';
 
-/* Construct a store reducer */
+declare var __DEBUG__: boolean;
+
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION__: any;
+    }
+}
+
+// Construct a store reducer
 const reducer = reduxCombineReducers({
-  // The blank reducer (delete if the amount of other reducers is >= 1)
-  blank: (state, _) => state || {},
+    // The blank reducer (delete if the amount of other reducers is >= 1)
+    blank: (state, _) => state || {},
 });
 
-/* Create the history for the router */
+// Create the history for the router
 export let history = createHashHistory();
 
-/* Create the router middleware */
+// Create the router middleware
 const routerMiddleware = createRouterMiddleware(history);
 
-/* Construct the store enhancer */
+// Construct the store enhancer
 let enhancer = reduxCompose(
     reduxApplyMiddleware(reduxThunk),
     reduxApplyMiddleware(routerMiddleware)
 );
 
-declare var __DEBUG__: boolean;
-
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION__: any;
-  }
-}
-
-/* Enable the Redux devtools iff built in the debug mode*/
+// Enable the Redux devtools iff built in the debug mode
 if (__DEBUG__ && window.__REDUX_DEVTOOLS_EXTENSION__) {
     enhancer = reduxCompose(enhancer, window.__REDUX_DEVTOOLS_EXTENSION__());
 }
 
-/* Create the store */
+// Create the store
 const store = createStore(
     reducer,
     initialState,
     enhancer,
 );
 
-/* Export the store */
+// Export the store
 export default store;
