@@ -23,20 +23,20 @@ export interface NavigationState {
  * @return {React.Component}
  */
 export default class Navigation extends React.Component<NavigationProps, NavigationState> {
-  static projectGithubLink: string = "https://github.com/wrongway4you/modern-frontend-starter-kit";
+  static projectGithubLink: string = 'https://github.com/wrongway4you/modern-frontend-starter-kit';
   static items: any = [
     {
-      name: "Source Code",
+      name: 'Source Code',
       rel: false,
       url: `${Navigation.projectGithubLink}`,
     },
     {
-      name: "Issues",
+      name: 'Issues',
       rel: false,
       url: `${Navigation.projectGithubLink}/issues`,
     },
     {
-      name: "Pull request",
+      name: 'Pull request',
       rel: false,
       url: `${Navigation.projectGithubLink}/pulls`,
     },
@@ -71,7 +71,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
           )}
         </div>
         <div className={style.header__nav__mobileMenuBtn} onClick={this.toggleMobileNavigation}>
-          <i className="fa fa-bars"></i>
+          <i className='fa fa-bars'></i>
         </div>
       </div>
     );
