@@ -18,8 +18,8 @@ c.rootDirPath = path.resolve(__dirname, '..');
 c.srcDirPath = path.resolve(c.rootDirPath, 'src');
 c.srcImgDirPath = path.resolve(c.srcDirPath, 'img');
 c.buildDirPath = path.resolve(c.rootDirPath, 'build');
-c.jekyllBuildDirPath = path.resolve(c.rootDirPath, 'jekyll_build');
 c.toolsDirPath = path.resolve(c.rootDirPath, 'tools');
+c.confDirPath = path.resolve(c.rootDirPath, 'conf');
 c.nodeModulesDirPath = path.resolve(c.rootDirPath, 'node_modules');
 c.sassCacheDirPath = path.resolve(c.rootDirPath, '.sass-cache');
 c.entrySrcFilePath = path.resolve(c.srcDirPath, c.entryFileName);
@@ -28,6 +28,8 @@ c.faviconFilePath = path.resolve(c.srcImgDirPath, 'favicon.png');
 c.yarnErrorLogFilePath = path.resolve(c.rootDirPath, 'yarn-error.log');
 c.tmpDirPath = path.resolve(c.rootDirPath, 'tmp');
 c.testsEntryFilePath = path.resolve(c.srcDirPath, 'index.spec.tsx');
+c.tsDevConfigFilePath = path.resolve(c.confDirPath, 'tsconfig.dev.json');
+c.tsReleaseConfigFilePath = path.resolve(c.confDirPath, 'tsconfig.release.json');
 
 /**
  * @summary
@@ -77,6 +79,7 @@ const DEV_BUILD_TYPE_CONFIG = {
   indexHtmlAtRootDir: false,
   liveReload: false,
   publicPath: '/',
+  tsConfigFilePath: c.tsDevConfigFilePath,
 };
 
 /**
@@ -106,6 +109,7 @@ const RELEASE_BUILD_TYPE_CONFIG = {
   indexHtmlAtRootDir: true,
   liveReload: false,
   publicPath: '/',
+  tsConfigFilePath: c.tsReleaseConfigFilePath,
 };
 
 const TESTS_BUILD_TYPE_CONFIG = {
