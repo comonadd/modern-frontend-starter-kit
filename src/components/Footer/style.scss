@@ -9,6 +9,7 @@
  */
 
 @import "vars";
+@import "mixins";
 
 /* The footer */
 .footer {
@@ -19,6 +20,7 @@
   background: $footer___background;
   border-top: $footer___border-top;
   z-index: 1;
+  align-items: center;
   justify-content: space-around;
   padding: 80px 0;
 
@@ -38,6 +40,11 @@
       padding: 8px 0;
       margin-bottom: 16px;
       border-bottom: 1px solid #eee;
+      font-weight: bold;
+
+      @include media(">=tablet") {
+        font-size: 14px;
+      }
     }
 
     /* The footer section content */
