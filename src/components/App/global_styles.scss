@@ -8,35 +8,35 @@
 
 @import "vars";
 
-html,
-body {
+:global html,
+:global body {
   height: 100%;
 }
 
-body {
+:global body {
   margin: 0;
   background-color: $body___background-color;
   font: $body___font;
   color: $body___color;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+:global h1,
+:global h2,
+:global h3,
+:global h4,
+:global h5,
+:global h6 {
   font-family: $heading___font-family;
   font-weight: $heading___font-weight;
   color: $heading___color;
 }
 
-p {
+:global p {
   line-height: $paragraph___line-height;
   margin: $paragraph___margin;
 }
 
-a {
+:global a {
   color: $link___color;
   text-decoration: $link___text-decoration;
 
