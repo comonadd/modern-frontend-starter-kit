@@ -8,7 +8,7 @@ const fs = require('fs');
 
 const webpack = require('webpack');
 
-const constants = require('./constants');
+const constants = require('./util/constants');
 const config = require('./config');
 
 const buildOutputConfig = require('./webpack/build_output_config');
@@ -28,34 +28,24 @@ const buildExternalsConfig = require('./webpack/build_externals_config');
 const buildWebpackConfigWithBuildConfig = buildModeConfig => ({
   // The entry configuration
   entry: buildModeConfig.entry,
-
   // Webpack output configuration
   output: buildOutputConfig(buildModeConfig),
-
   // Webpack module configuration
   module: buildModuleConfig(buildModeConfig),
-
   // Webpack plugins
   plugins: buildPluginsArray(buildModeConfig),
-
   // Webpack resolve configuration
   resolve: buildResolveConfig(buildModeConfig),
-
   // Externals
   externals: buildExternalsConfig(buildModeConfig),
-
   // The Webpack context
   context: config.srcDirPath,
-
   // Don't try to continue if there are any errors
   bail: buildModeConfig.webpackBail,
-
   // Webpack cache
   cache: buildModeConfig.cache,
-
   // Source map generation configuration
   devtool: buildModeConfig.devtool,
-
   // Webpack stats
   stats: buildStatsConfig(buildModeConfig),
 });

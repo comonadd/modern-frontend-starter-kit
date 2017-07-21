@@ -7,7 +7,7 @@ const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
 const config = require('../config');
 
-module.exports = (buildModeConfig) => {
+module.exports = buildModeConfig => {
   const stylesUseOption = [
     {
       loader: 'css-loader',
@@ -17,31 +17,24 @@ module.exports = (buildModeConfig) => {
         modules: true,
         minimize: buildModeConfig.minimize,
         camelCase: 'dashes',
-        discardComments: {
-          removeAll: true,
-        },
+        discardComments: {removeAll: true},
         localIdentName: buildModeConfig.stylesLocalIdentName,
       },
     },
     {
       loader: 'sass-loader',
-      options: {
-        includePaths: [config.srcDirPath, config.nodeModulesDirPath],
-      },
+      options: {includePaths: [config.srcDirPath, config.nodeModulesDirPath]},
     },
   ];
 
   return {
     test: /\.scss$/,
     // include: [config.srcDirPath],*/
-    use: buildModeConfig.optimize ? ExtractTextWebpackPlugin.extract({
-      use: stylesUseOption,
-      fallback: 'style-loader',
-    }) : [
-      {
-        loader: 'style-loader',
-      },
-      ...stylesUseOption,
-    ],
+    use: buildModeConfig.optimize
+      ? ExtractTextWebpackPlugin.extract({
+        use: stylesUseOption,
+        fallback: 'style-loader',
+      })
+      : [{loader: 'style-loader'}, ...stylesUseOption],
   };
 };

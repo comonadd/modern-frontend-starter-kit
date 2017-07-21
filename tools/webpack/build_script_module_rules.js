@@ -27,6 +27,7 @@ module.exports = buildModeConfig => ({
           ...(buildModeConfig.showDebugInfo
             ? ['transform-react-jsx-source']
             : []),
+          ,
           /* __self attribute to JSX which React will use for some warnings */
           ...(buildModeConfig.showDebugInfo
             ? ['transform-react-jsx-self']
@@ -37,9 +38,7 @@ module.exports = buildModeConfig => ({
     {
       loader: 'awesome-typescript-loader',
       options: {
-        reportFiles: [
-          'src/**/*.{ts,tsx}',
-        ],
+        reportFiles: ['src/**/*.{ts,tsx}'],
         configFileName: buildModeConfig.tsConfigFilePath,
       },
     },

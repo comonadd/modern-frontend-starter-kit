@@ -28,14 +28,15 @@ module.exports.listDirRecWithPred = (rootPath, pred) => {
   const filePaths = [];
 
   /* The recursive function that is used for iteration */
-  const considerDir = (filePath) => {
+  const considerDir = filePath => {
     /* If given path is a directory */
     if (fs.lstatSync(filePath).isDirectory()) {
       /* Read all files in a directory, and iterate on them */
       /* recursivly calling considerDir() */
       const paths = fs.readdirSync(filePath);
-      paths.forEach((_filePath, ..._) =>
-        considerDir(path.resolve(filePath, _filePath)));
+      paths.forEach(
+        (_filePath, ..._) => considerDir(path.resolve(filePath, _filePath)),
+      );
     } else if (pred(filePath) && fs.existsSync(filePath)) {
       /* Append file path to the list of paths */
       filePaths.push(filePath);
@@ -62,11 +63,10 @@ module.exports.listDirRecWithPred = (rootPath, pred) => {
 module.exports.copyFilesFromIntoWithPred = (fromDirPath, intoDirPath, pred) => {
   /* Function that maps the given file from   */
   /* source directory to the output directory */
-  const mapPath = p =>
-    path.resolve(intoDirPath, path.relative(fromDirPath, p));
+  const mapPath = p => path.resolve(intoDirPath, path.relative(fromDirPath, p));
 
   /* Function that processes given directory */
-  const processDir = (dirPath) => {
+  const processDir = dirPath => {
     fs.readdir(dirPath, (err, dirEntries) => {
       if (!err) {
         /* There is no error */
@@ -103,10 +103,10 @@ module.exports.copyFilesFromIntoWithPred = (fromDirPath, intoDirPath, pred) => {
  * @return {undefined}
  */
 module.exports.forEachFilePathWithPred = (rootDirPath, pred, f) => {
-  const processPath = (filePath) => {
+  const processPath = filePath => {
     if (fs.lstatSync(filePath).isDirectory()) {
       fs.readdir(filePath, (err, dirEntries) => {
-        dirEntries.forEach((entryPath) => {
+        dirEntries.forEach(entryPath => {
           processPath(path.resolve(filePath, entryPath));
         });
       });

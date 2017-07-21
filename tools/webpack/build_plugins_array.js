@@ -18,10 +18,10 @@ const PLUGINS_DIR = path.resolve(__dirname, 'plugins');
  *
  * @return {Array}
  */
-module.exports = buildModeConfig =>
-  fs.readdirSync(PLUGINS_DIR)
-    .map(pluginFilename =>
-      /* eslint-disable */
-      require(path.resolve(PLUGINS_DIR, pluginFilename))(buildModeConfig))
-      /* eslint-enable */
-    .filter(plugin => plugin !== undefined);
+module.exports = buildModeConfig => fs
+  .readdirSync(PLUGINS_DIR)
+  .map(
+    pluginFilename => /* eslint-disable */
+    require(path.resolve(PLUGINS_DIR, pluginFilename))(buildModeConfig),
+  )
+  .filter(plugin => plugin !== undefined);

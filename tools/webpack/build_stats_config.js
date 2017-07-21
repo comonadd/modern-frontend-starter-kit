@@ -3,8 +3,9 @@
  * @author Dmitry Guzeev <dmitry.guzeev@yahoo.com>
  */
 
-module.exports = buildModeConfig => ({
-  colors: true,
-  timings: true,
-  reasons: buildModeConfig.showWebpackReasonsInStats,
-});
+module.exports = buildModeConfig =>
+  ({
+    colors: true,
+    timings: true,
+    reasons: buildModeConfig.showWebpackReasonsInStats,
+  });

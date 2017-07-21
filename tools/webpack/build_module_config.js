@@ -15,10 +15,11 @@ const buildImgRules = require('./build_img_module_rules');
  *
  * @return {object}
  */
-module.exports = buildModeConfig => ({
-  rules: [
-    buildScriptRules(buildModeConfig),
-    buildStyleRules(buildModeConfig),
-    buildImgRules(buildModeConfig),
-  ],
-});
+module.exports = buildModeConfig =>
+  ({
+    rules: [
+      buildScriptRules(buildModeConfig),
+      buildStyleRules(buildModeConfig),
+      buildImgRules(buildModeConfig),
+    ],
+  });

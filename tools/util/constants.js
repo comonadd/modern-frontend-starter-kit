@@ -17,9 +17,4 @@
  *           The continuous development build.
  *           It is used when running development server.
  */
-module.exports.buildMode = {
-  DEV: 0,
-  RELEASE: 1,
-  CONTINUOUS_DEV: 2,
-  TESTS: 3,
-};
+module.exports.buildMode = {DEV: 0, RELEASE: 1, CONTINUOUS_DEV: 2, TESTS: 3};

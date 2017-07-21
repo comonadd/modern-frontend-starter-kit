@@ -74,6 +74,8 @@
     "favicons-webpack-plugin": "^0.0.7",
     "file-loader": "^0.11.2",
     "fs-extra": "^3.0.1",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-prettier": "^1.1.0",
     "html-webpack-plugin": "^2.29.0",
     "include-media": "^1.4.9",
     "karma": "^1.7.0",
@@ -87,7 +89,7 @@
     "mocha": "^3.4.2",
     "node-sass": "^4.5.3",
     "node-sass-json-importer": "^3.0.2",
-    "prettier": "^1.5.2",
+    "prettier": "^1.4.0",
     "react-test-renderer": "^15.6.1",
     "rimraf": "^2.6.1",
     "sass-convert": "^0.5.2",
@@ -111,20 +113,20 @@
     "winston": "^2.3.1"
   },
   "scripts": {
-    "build:release": "babel-node tools/build release",
-    "build:dev": "babel-node tools/build dev",
+    "build:release": "babel-node ./node_modules/gulp/bin/gulp.js --cwd tools build:release",
+    "build:dev": "babel-node ./node_modules/gulp/bin/gulp.js --cwd tools build:dev",
     "build": "yarn run build:release",
-    "clean": "babel-node tools/clean",
-    "dev-server": "babel-node tools/run_dev_server",
-    "format:scripts": "babel-node tools/format scripts",
-    "format:styles": "babel-node tools/format styles",
-    "format": "yarn run format:scripts && yarn run format:styles",
-    "lint": "yarn run lint:scripts && yarn run lint:styles",
+    "format:scripts": "babel-node ./node_modules/gulp/bin/gulp.js --cwd tools format:scripts",
+    "format:styles": "babel-node ./node_modules/gulp/bin/gulp.js --cwd tools format:styles",
+    "format": "babel-node ./node_modules/gulp/bin/gulp.js --cwd tools format",
     "lint:styles": "stylelint --config conf/stylelintrc.json src/**/*.scss",
     "lint:scripts": "eslint -c conf/eslintrc.yml tools && tslint -c conf/tslint.json 'src/**/*.ts'",
-    "test": "yarn run test:single",
+    "lint": "yarn run lint:scripts && yarn run lint:styles",
     "test:watch": "babel-node ./node_modules/karma/bin/karma start tools/karma.conf.js",
-    "test:single": "babel-node ./node_modules/karma/bin/karma start tools/karma.conf.js --single-run"
+    "test:single": "babel-node ./node_modules/karma/bin/karma start tools/karma.conf.js --single-run",
+    "test": "yarn run test:single",
+    "clean": "babel-node ./node_modules/gulp/bin/gulp.js --cwd tools clean",
+    "dev-server": "babel-node ./node_modules/gulp/bin/gulp.js --cwd tools dev-server"
   },
   "babel": {
     "presets": [
