@@ -40,7 +40,7 @@ module.exports = buildModeConfig => ({
         reportFiles: [
           'src/**/*.{ts,tsx}',
         ],
-        configFileName: 'tools/tsconfig.dev.json',
+        configFileName: buildModeConfig.tsConfigFilePath,
       },
     },
   ],
