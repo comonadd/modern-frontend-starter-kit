@@ -3,8 +3,6 @@
  * @author Dmitry Guzeev <dmitry.guzeev@yahoo.com>
  */
 
-'use strict';
-
 import React from 'react';
 import { assert, expect } from 'chai';
 import { mount as enzymeMount } from 'enzyme';
