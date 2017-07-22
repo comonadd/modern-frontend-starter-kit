@@ -39,7 +39,6 @@ c.pathsToRemoveWhenCleaning = [
   c.buildDirPath,
   c.sassCacheDirPath,
   c.yarnErrorLogFilePath,
-  c.jekyllBuildDirPath,
   c.tmpDirPath,
 ];
 
