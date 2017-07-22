@@ -5,7 +5,6 @@
 
 import {
   createStore,
-  combineReducers,
   compose as reduxCompose,
   applyMiddleware as reduxApplyMiddleware,
   combineReducers as reduxCombineReducers,
@@ -16,13 +15,12 @@ import {
   routerReducer,
   routerMiddleware as createRouterMiddleware,
 } from 'react-router-redux';
-import { reactReduxFirebase, firebaseStateReducer } from 'react-redux-firebase'
 
 import RootState from './root_state';
 
 // Construct a store reducer
 const rootReducer = reduxCombineReducers<RootState>({
-  firebase: firebaseStateReducer,
+  blank: (state: RootState) => state || {},
 });
 
 // Create the history for the router
@@ -31,14 +29,10 @@ export let history = createHashHistory();
 // Create the router middleware
 const routerMiddleware = createRouterMiddleware(history);
 
-const storage = reduxCompose(
-)(localStorageAdapter(window.localStorage));
-
 // Construct the store enhancer
 let enhancer = reduxCompose(
   reduxApplyMiddleware(reduxThunk),
   reduxApplyMiddleware(routerMiddleware),
-  persistState(storage, 'user'),
 );
 
 declare var __DEBUG__: boolean;
@@ -54,32 +48,9 @@ if (__DEBUG__ && window.__REDUX_DEVTOOLS_EXTENSION__) {
   enhancer = reduxCompose(enhancer, window.__REDUX_DEVTOOLS_EXTENSION__());
 }
 
-/**
- * @summary
- * The Firebase configuration object.
- */
-const firebaseConfig = {
-  apiKey: "AIzaSyC0YpGGTT3hBK6nTFIy0OhL4DF_Ucpe8Jw",
-  authDomain: "chat-portfolio-app.firebaseapp.com",
-  databaseURL: "https://chat-portfolio-app.firebaseio.com",
-  projectId: "chat-portfolio-app",
-  storageBucket: "chat-portfolio-app.appspot.com",
-  messagingSenderId: "957903827137"
-};
-
 // Create the store
-export default reduxCompose(
-  reactReduxFirebase(firebaseConfig, {
-    userProfile: '/users',
-    enableLogging: false,
-    profileFactory: (userData: any, profile: any) => ({
-      email: profile.email,
-      username: profile.username,
-      firstname: profile.firstname,
-      lastname: profile.lastname,
-    }),
-  }))(createStore)(
-    rootReducer,
-    {} as RootState,
-    enhancer,
-  );
+export default createStore(
+  rootReducer,
+  {} as RootState,
+  enhancer,
+);
