@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "The modern frontend starter kit",
   "homepage": "https://github.com/WRONGWAY4YOU/modern-frontent-starter-kit#readme",
-  "main": "src/index.js",
+  "main": "src/index.tsx",
   "repository": {
     "type": "git",
     "url": "https://github.com/WRONGWAY4YOU/modern-frontend-starter-kit.git"
