@@ -5,4 +5,5 @@
 
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
-module.exports = _ => new CheckerPlugin();
+module.exports = _ =>
+  new CheckerPlugin();

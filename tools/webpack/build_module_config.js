@@ -3,9 +3,15 @@
  * @author Dmitry Guzeev <dmitry.guzeev@yahoo.com>
  */
 
-const buildScriptRules = require('./build_script_module_rules');
-const buildStyleRules = require('./build_style_module_rules');
-const buildImgRules = require('./build_img_module_rules');
+/**
+ * The list of rules to be inserted into the Webpack configuration.
+ * @type {[string]}
+ */
+const rulesScripts = [
+  './build_script_module_rules',
+  './build_style_module_rules',
+  './build_img_module_rules',
+];
 
 /**
  * @summary
@@ -15,10 +21,8 @@ const buildImgRules = require('./build_img_module_rules');
  *
  * @return {object}
  */
+/* eslint-disable */
 module.exports = buildModeConfig => ({
-  rules: [
-    buildScriptRules(buildModeConfig),
-    buildStyleRules(buildModeConfig),
-    buildImgRules(buildModeConfig),
-  ],
+  rules: rulesScripts.map(path => require(path)(buildModeConfig)),
 });
+/* eslint-enable */

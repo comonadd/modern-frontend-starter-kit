@@ -6,7 +6,7 @@
 const webpack = require('webpack');
 
 module.exports = buildModeConfig => (
-  buildModeConfig.optimize ?
-  new webpack.optimize.OccurrenceOrderPlugin()
-  : undefined
+  buildModeConfig.optimize
+    ? new webpack.optimize.OccurrenceOrderPlugin()
+    : undefined
 );

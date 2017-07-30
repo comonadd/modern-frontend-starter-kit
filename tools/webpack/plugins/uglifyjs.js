@@ -10,63 +10,36 @@ module.exports = buildModeConfig => (
     compress: {
       // Disable support for IE8
       screw_ie8: true,
-
+      // Optimize conditionals
+      conditionals: true,
+      // Evaluate constant expressions
+      comparisons: true,
+      // Optimize boolean expressions
+      evaluate: true,
+      // Optimize loops
+      booleans: true,
+      // Drop unused variables/functions
+      loops: true,
+      // Hoist function declarations
+      unused: true,
+      // Hoist variable declarations
+      hoist_funs: true,
+      // Optimize if-s followed by return/continue
+      hoist_vars: false,
+      // Join var declarations
+      if_return: true,
+      // Try to cascade `right` into `left` in sequences
+      join_vars: true,
+      // Drop side-effect-free statements
+      cascade: true,
+      // Warn about potentially dangerous optimizations/code
+      side_effects: true,
+      // Global definitions
+      global_defs: {
+        // To be added...
+      },
       // Disable warnings
       warnings: false,
-
-      // Join consecutive statemets with the “comma operator”
-      sequences: true,
-
-      // Optimize property access: a["foo"] → a.foo
-      properties: true,
-
-      // Discard unreachable code
-      dead_code: true,
-
-      // Discard “debugger” statements
-      drop_debugger: true,
-
-      // Some unsafe optimizations (see below)
-      unsafe: false,
-
-      // Optimize if-s and conditional expressions
-      conditionals: true,
-
-      // optimize comparisons
-      comparisons: true,
-
-      // evaluate constant expressions
-      evaluate: true,
-
-      // optimize boolean expressions
-      booleans: true,
-
-      // optimize loops
-      loops: true,
-
-      // drop unused variables/functions
-      unused: true,
-
-      // hoist function declarations
-      hoist_funs: true,
-
-      // hoist variable declarations
-      hoist_vars: false,
-
-      // optimize if-s followed by return/continue
-      if_return: true,
-
-      // join var declarations
-      join_vars: true,
-
-      // try to cascade `right` into `left` in sequences
-      cascade: true,
-
-      // drop side-effect-free statements
-      side_effects: true,
-
-      // global definitions
-      global_defs: {},
     },
     mangle: {
       screw_ie8: true,

@@ -1,8 +1,7 @@
-/* File: manager.js */
-/* Creation date: 2017-06-04 */
-/* Creator: Dmitry Guzeev <dmitry.guzeev@yahoo.com> */
-/* Description: */
-/*   Utility */
+/**
+ * @file index.js
+ * @author Dmitry Guzeev <dmitry.guzeev@yahoo.com>
+ */
 
 const fs = require('fs');
 const path = require('path');
@@ -18,7 +17,7 @@ const fse = require('fs-extra');
  * <br/>
  * This function can also accept file path as a first argument
  *
- * @param {string} _path - File/Directory path
+ * @param {string} rootPath - File/Directory path
  * @param {Function} pred - Predicate to apply for each path
  *
  * @return {string[]} - the list of file paths
@@ -34,8 +33,9 @@ module.exports.listDirRecWithPred = (rootPath, pred) => {
       /* Read all files in a directory, and iterate on them */
       /* recursivly calling considerDir() */
       const paths = fs.readdirSync(filePath);
-      paths.forEach((_filePath, ..._) =>
-        considerDir(path.resolve(filePath, _filePath)));
+      paths.forEach(
+        (_filePath, ..._) => considerDir(path.resolve(filePath, _filePath)),
+      );
     } else if (pred(filePath) && fs.existsSync(filePath)) {
       /* Append file path to the list of paths */
       filePaths.push(filePath);
@@ -62,8 +62,7 @@ module.exports.listDirRecWithPred = (rootPath, pred) => {
 module.exports.copyFilesFromIntoWithPred = (fromDirPath, intoDirPath, pred) => {
   /* Function that maps the given file from   */
   /* source directory to the output directory */
-  const mapPath = p =>
-    path.resolve(intoDirPath, path.relative(fromDirPath, p));
+  const mapPath = p => path.resolve(intoDirPath, path.relative(fromDirPath, p));
 
   /* Function that processes given directory */
   const processDir = (dirPath) => {
