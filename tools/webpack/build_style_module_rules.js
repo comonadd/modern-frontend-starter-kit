@@ -3,38 +3,38 @@
  * @author Dmitry Guzeev <dmitry.guzeev@yahoo.com>
  */
 
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const ExtractTextWebpackPlugin =
+  require('extract-text-webpack-plugin');
 
 const config = require('../config');
 
-module.exports = buildModeConfig => {
-  const stylesUseOption = [
-    {
-      loader: 'css-loader',
-      options: {
-        importLoaders: 0,
-        sourceMap: buildModeConfig.stylesSourceMapEnabled,
-        modules: true,
-        minimize: buildModeConfig.minimize,
-        camelCase: 'dashes',
-        discardComments: {removeAll: true},
-        localIdentName: buildModeConfig.stylesLocalIdentName,
-      },
+const buildStylesUseOption = buildModeConfig => ([
+  {
+    loader: 'css-loader',
+    options: {
+      importLoaders: 0,
+      sourceMap: buildModeConfig.stylesSourceMapEnabled,
+      modules: true,
+      minimize: buildModeConfig.minimize,
+      camelCase: 'dashes',
+      discardComments: { removeAll: true },
+      localIdentName: buildModeConfig.stylesLocalIdentName,
     },
-    {
-      loader: 'sass-loader',
-      options: {includePaths: [config.srcDirPath, config.nodeModulesDirPath]},
+  },
+  {
+    loader: 'sass-loader',
+    options: {
+      includePaths: [config.srcDirPath, config.nodeModulesDirPath],
     },
-  ];
+  },
+]);
 
-  return {
-    test: /\.scss$/,
-    // include: [config.srcDirPath],*/
-    use: buildModeConfig.optimize
-      ? ExtractTextWebpackPlugin.extract({
-        use: stylesUseOption,
-        fallback: 'style-loader',
-      })
-      : [{loader: 'style-loader'}, ...stylesUseOption],
-  };
-};
+module.exports = buildModeConfig => ({
+  test: /\.scss$/,
+  use: buildModeConfig.optimize
+    ? ExtractTextWebpackPlugin.extract({
+      use: buildStylesUseOption(buildModeConfig),
+      fallback: 'style-loader',
+    })
+    : [{ loader: 'style-loader' }, ...buildStylesUseOption(buildModeConfig)],
+});
