@@ -59,3 +59,7 @@ build
 
 # The temporary directory
 tmp
+
+# IDEA
+.idea/workspace.xml
+.idea/tasks.xml
