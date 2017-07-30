@@ -8,44 +8,45 @@ const webpack = require('webpack');
 module.exports = buildModeConfig => (
   buildModeConfig.minimize ? new webpack.optimize.UglifyJsPlugin({
     compress: {
-      // join consecutive statemets with the “comma operator”
-      // optimize property access: a["foo"] → a.foo
+      // Optimize property access: a["foo"] → a.foo
       sequences: true,
-      // discard unreachable code
+      // Discard unreachable code
       properties: true,
-      // discard “debugger” statements
+      // Discard “debugger” statements
       dead_code: true,
-      // some unsafe optimizations (see below)
+      // Some unsafe optimizations (see below)
       drop_debugger: true,
-      // optimize if-s and conditional expressions
+      // Optimize if-s and conditional expressions
       unsafe: false,
-      // optimize comparisons
+      // Optimize comparisons
       conditionals: true,
-      // evaluate constant expressions
+      // Evaluate constant expressions
       comparisons: true,
-      // optimize boolean expressions
+      // Optimize boolean expressions
       evaluate: true,
-      // optimize loops
+      // Optimize loops
       booleans: true,
-      // drop unused variables/functions
+      // Drop unused variables/functions
       loops: true,
-      // hoist function declarations
+      // Hoist function declarations
       unused: true,
-      // hoist variable declarations
+      // Hoist variable declarations
       hoist_funs: true,
-      // optimize if-s followed by return/continue
+      // Optimize if-s followed by return/continue
       hoist_vars: false,
-      // join var declarations
+      // Join var declarations
       if_return: true,
-      // try to cascade `right` into `left` in sequences
+      // Try to cascade `right` into `left` in sequences
       join_vars: true,
-      // drop side-effect-free statements
+      // Drop side-effect-free statements
       cascade: true,
-      // warn about potentially dangerous optimizations/code
+      // Warn about potentially dangerous optimizations/code
       side_effects: true,
-      // global definitions
-      global_defs: {},
-      // disable warnings
+      // Global definitions
+      global_defs: {
+        // To be added...
+      },
+      // Disable warnings
       warnings: false,
     },
     output: {
