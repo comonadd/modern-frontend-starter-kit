@@ -20,24 +20,24 @@ const buildWebpackConfig = require('./build_webpack_config');
 
 gulp.task(
   'build:release',
-  () => new Promise(resolve => {
+  () => new Promise((resolve) => {
     build(constants.buildMode.RELEASE).then(resolve);
   }),
 );
 
 gulp.task(
   'build:dev',
-  () => new Promise(resolve => {
+  () => new Promise((resolve) => {
     build(constants.buildMode.DEV).then(resolve);
   }),
 );
 
 gulp.task(
   'clean',
-  () => new Promise(resolve => {
-    config.pathsToRemoveWhenCleaning.forEach(path => {
-      console.log(`Removing "${path}"`);
-      rimraf(path, () => {});
+  () => new Promise((resolve) => {
+    config.pathsToRemoveWhenCleaning.forEach((filePath) => {
+      console.info(`Removing "${filePath}"`);
+      rimraf(filePath, () => {});
     });
     resolve();
   }),
@@ -45,7 +45,7 @@ gulp.task(
 
 gulp.task(
   'dev-server',
-  () => new Promise(resolve => {
+  () => new Promise((resolve) => {
     const webpackConfig = buildWebpackConfig(
       constants.buildMode.CONTINUOUS_DEV,
     );
@@ -121,8 +121,12 @@ gulp.task(
     gulp
       .src(path.resolve(config.srcDirPath, '**/*.scss'))
       .on('data', file => logger.log('info', `formatting "${file.path}"`))
-      .pipe(sassConverter({from: 'scss', to: 'scss'}))
+      .pipe(sassConverter({
+        from: 'scss',
+        to: 'scss',
+      }))
       .pipe(gulp.dest(config.srcDirPath)),
 );
 
-gulp.task('format', gulp.parallel('format:scripts', 'format:styles'));
+gulp.task('format',
+  gulp.parallel('format:scripts', 'format:styles'));
