@@ -5,9 +5,16 @@
 
 const config = require('../config');
 
-module.exports = _ =>
-  ({
-    test: /\.(jpg|png)$/,
-    include: config.srcImgDirPath,
-    use: [{loader: 'url-loader', options: {limit: 0, useRelativePath: false}}],
-  });
+module.exports = _ => ({
+  test: /\.(jpg|png)$/,
+  include: config.srcImgDirPath,
+  use: [
+    {
+      loader: 'url-loader',
+      options: {
+        limit: 0,
+        useRelativePath: false,
+      },
+    },
+  ],
+});
