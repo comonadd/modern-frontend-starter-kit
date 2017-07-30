@@ -10,6 +10,7 @@ const config = require('../config');
 
 const PLUGINS_DIR = path.resolve(__dirname, 'plugins');
 
+/* eslint-disable */
 /**
  * @summary
  * Build the array of plugins based on a given build mode.
@@ -20,8 +21,6 @@ const PLUGINS_DIR = path.resolve(__dirname, 'plugins');
  */
 module.exports = buildModeConfig => fs
   .readdirSync(PLUGINS_DIR)
-  .map(
-    pluginFilename => /* eslint-disable */
-    require(path.resolve(PLUGINS_DIR, pluginFilename))(buildModeConfig),
-  )
-  .filter(plugin => plugin !== undefined);
+  .map(pluginFilename => require(path.resolve(PLUGINS_DIR, pluginFilename))(buildModeConfig))
+  .filter(plugin => !!plugin);
+/* eslint-enable */
