@@ -27,7 +27,6 @@ module.exports = buildModeConfig => ({
           ...(buildModeConfig.showDebugInfo
             ? ['transform-react-jsx-source']
             : []),
-          ,
           /* __self attribute to JSX which React will use for some warnings */
           ...(buildModeConfig.showDebugInfo
             ? ['transform-react-jsx-self']
