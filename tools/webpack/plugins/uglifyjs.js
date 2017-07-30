@@ -44,8 +44,9 @@ module.exports = buildModeConfig => (
       // warn about potentially dangerous optimizations/code
       side_effects: true,
       // global definitions
-      warnings: true,
       global_defs: {},
+      // disable warnings
+      warnings: false,
     },
     output: {
       comments: false,
