@@ -6,7 +6,7 @@
 const config = require('../config');
 
 module.exports = _ => ({
-  test: /\.(jpg|png)$/,
+  test: /\.(jpg|png|jpeg|gif|svg)$/,
   include: config.srcImgDirPath,
   use: [
     {
