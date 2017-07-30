@@ -11,10 +11,9 @@
  *
  * @return {object}
  */
-module.exports = buildModeConfig =>
-  ({
-    path: buildModeConfig.outDirPath,
-    filename: buildModeConfig.outputFilename,
-    chunkFilename: buildModeConfig.outputChunkFilename,
-    publicPath: buildModeConfig.publicPath,
-  });
+module.exports = buildModeConfig => ({
+  path: buildModeConfig.outDirPath,
+  filename: buildModeConfig.outputFilename,
+  chunkFilename: buildModeConfig.outputChunkFilename,
+  publicPath: buildModeConfig.publicPath,
+});

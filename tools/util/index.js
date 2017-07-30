@@ -1,8 +1,7 @@
-/* File: manager.js */
-/* Creation date: 2017-06-04 */
-/* Creator: Dmitry Guzeev <dmitry.guzeev@yahoo.com> */
-/* Description: */
-/*   Utility */
+/**
+ * @file index.js
+ * @author Dmitry Guzeev <dmitry.guzeev@yahoo.com>
+ */
 
 const fs = require('fs');
 const path = require('path');
@@ -18,7 +17,7 @@ const fse = require('fs-extra');
  * <br/>
  * This function can also accept file path as a first argument
  *
- * @param {string} _path - File/Directory path
+ * @param {string} rootPath - File/Directory path
  * @param {Function} pred - Predicate to apply for each path
  *
  * @return {string[]} - the list of file paths
@@ -28,7 +27,7 @@ module.exports.listDirRecWithPred = (rootPath, pred) => {
   const filePaths = [];
 
   /* The recursive function that is used for iteration */
-  const considerDir = filePath => {
+  const considerDir = (filePath) => {
     /* If given path is a directory */
     if (fs.lstatSync(filePath).isDirectory()) {
       /* Read all files in a directory, and iterate on them */
@@ -66,7 +65,7 @@ module.exports.copyFilesFromIntoWithPred = (fromDirPath, intoDirPath, pred) => {
   const mapPath = p => path.resolve(intoDirPath, path.relative(fromDirPath, p));
 
   /* Function that processes given directory */
-  const processDir = dirPath => {
+  const processDir = (dirPath) => {
     fs.readdir(dirPath, (err, dirEntries) => {
       if (!err) {
         /* There is no error */
@@ -103,10 +102,10 @@ module.exports.copyFilesFromIntoWithPred = (fromDirPath, intoDirPath, pred) => {
  * @return {undefined}
  */
 module.exports.forEachFilePathWithPred = (rootDirPath, pred, f) => {
-  const processPath = filePath => {
+  const processPath = (filePath) => {
     if (fs.lstatSync(filePath).isDirectory()) {
       fs.readdir(filePath, (err, dirEntries) => {
-        dirEntries.forEach(entryPath => {
+        dirEntries.forEach((entryPath) => {
           processPath(path.resolve(filePath, entryPath));
         });
       });

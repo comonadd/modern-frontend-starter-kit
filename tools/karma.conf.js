@@ -17,11 +17,15 @@ module.exports = karmaConfig => karmaConfig.set({
   // Tests entry points
   files: ['src/**/*.spec.tsx'],
   // Preprocessors to use for each test file
-  preprocessors: {'src/**/*.spec.tsx': ['webpack', 'sourcemap']},
+  preprocessors: {
+    'src/**/*.spec.tsx': ['webpack', 'sourcemap'],
+  },
   // Reporters
   reporters: ['nyan'],
   // Nyan reporter configuration
-  nyanReporter: {suppressErrorHighlighting: true},
+  nyanReporter: {
+    suppressErrorHighlighting: true,
+  },
   // Plugins to load
   plugins: [
     'karma-mocha',
@@ -33,7 +37,9 @@ module.exports = karmaConfig => karmaConfig.set({
   ],
   // Webpack preprocessor configuration
   webpack: buildWebpackConfig(constants.buildMode.TESTS),
-  webpackMiddleware: {noInfo: false},
+  webpackMiddleware: {
+    noInfo: false,
+  },
   // Other settings
   port: 9876,
   colors: true,
