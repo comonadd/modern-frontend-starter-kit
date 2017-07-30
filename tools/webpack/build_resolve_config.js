@@ -8,6 +8,15 @@ const path = require('path');
 const config = require('../config');
 
 module.exports = _ => ({
-  extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.json', '.jpg', '.png'],
+  extensions: [
+    '.ts',
+    '.tsx',
+    '.js',
+    '.jsx',
+    '.scss',
+    '.json',
+    '.jpg',
+    '.png',
+  ],
   modules: [config.srcDirPath, config.nodeModulesDirPath],
 });

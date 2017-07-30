@@ -5,7 +5,7 @@
 
 const path = require('path');
 
-const constants = require('./constants');
+const constants = require('./util/constants');
 
 module.exports = {};
 const c = module.exports;
@@ -29,7 +29,11 @@ c.yarnErrorLogFilePath = path.resolve(c.rootDirPath, 'yarn-error.log');
 c.tmpDirPath = path.resolve(c.rootDirPath, 'tmp');
 c.testsEntryFilePath = path.resolve(c.srcDirPath, 'index.spec.tsx');
 c.tsDevConfigFilePath = path.resolve(c.confDirPath, 'tsconfig.dev.json');
-c.tsReleaseConfigFilePath = path.resolve(c.confDirPath, 'tsconfig.release.json');
+c.tsReleaseConfigFilePath = path.resolve(
+  c.confDirPath,
+  'tsconfig.release.json',
+);
+c.tsfmtConfigFilePath = path.resolve(c.confDirPath, 'tsfmt.json');
 
 /**
  * @summary

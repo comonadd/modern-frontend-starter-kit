@@ -8,16 +8,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('../../config');
 
 const minifyOption = buildModeConfig => (
-  buildModeConfig.minimize ? {
-    removeRedundantAttributes: true,
-    removeEmptyAttributes: true,
-    removeComments: true,
-    quoteCharacter: '\'',
-    collapseWhitespace: true,
-    caseSensitive: false,
-    collapseBooleanAttributes: true,
-    collapseInlineTagWhitespace: true,
-  } : false
+  buildModeConfig.minimize
+    ? {
+      removeRedundantAttributes: true,
+      removeEmptyAttributes: true,
+      removeComments: true,
+      quoteCharacter: '\'',
+      collapseWhitespace: true,
+      caseSensitive: false,
+      collapseBooleanAttributes: true,
+      collapseInlineTagWhitespace: true,
+    } : false
 );
 
 module.exports = buildModeConfig =>

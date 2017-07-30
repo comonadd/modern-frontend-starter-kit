@@ -7,9 +7,9 @@ const fs = require('fs');
 
 const webpack = require('webpack');
 
-const logger = require('./logger');
+const logger = require('./util/logger');
 const config = require('./config');
-const constants = require('./constants');
+const constants = require('./util/constants');
 const buildWebpackConfig = require('./build_webpack_config');
 
 /**
@@ -20,7 +20,9 @@ const buildWebpackConfig = require('./build_webpack_config');
  *
  * @return {undefined}
  */
-const build = (buildMode) => {
+module.exports = buildMode => new Promise((resolve) => {
+  process.env.NODE_ENV = config.buildMode[buildMode].nodeEnv;
+
   const webpackConfig = buildWebpackConfig(buildMode);
 
   /* Make the build directory */
@@ -36,13 +38,9 @@ const build = (buildMode) => {
             colors: true,
           });
 
-          logger.log(
-            'info',
-            `webpack:\n\n${statsStr}`,
-          );
+          logger.log('info', `webpack:\n\n${statsStr}`);
 
-          /* Exit with 'success' exit code */
-          process.exit(0);
+          resolve();
         } else {
           /* There were some errors */
           logger.log(
@@ -50,46 +48,9 @@ const build = (buildMode) => {
             `webpack reported some errors while compiling:\n${err}`,
           );
 
-          /* Exit with 'error' exit code */
-          process.exit(1);
+          resolve();
         }
       });
     });
   });
-};
-
-/**
- * @summary
- * The main function.
- *
- * @return {undefined}
- */
-const main = () => {
-  /* Determine the build mode */
-  const passedBuildType = process.argv[2];
-  let buildMode = config.defaultBuildType;
-
-  /* If the user passed any build mode, determine what it is */
-  if (passedBuildType !== undefined) {
-    switch (passedBuildType) {
-      case 'dev':
-        buildMode = constants.buildMode.DEV;
-        break;
-      case 'release':
-        buildMode = constants.buildMode.RELEASE;
-        break;
-      default:
-        logger.log(`unknown build mode: "${passedBuildType}"`);
-        break;
-    }
-  }
-
-  /* Set the NODE_ENV */
-  process.env.NODE_ENV = config.buildMode[buildMode].nodeEnv;
-
-  /* Build with the determined build mode */
-  build(buildMode);
-};
-
-/* Call the main function */
-main();
+});

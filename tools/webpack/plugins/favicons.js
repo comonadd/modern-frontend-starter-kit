@@ -8,6 +8,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const config = require('../../config');
 
 module.exports = buildModeConfig => (
-  buildModeConfig.buildFavicons ?
-  new FaviconsWebpackPlugin(config.faviconFilePath) : undefined
+  buildModeConfig.buildFavicons
+    ? new FaviconsWebpackPlugin(config.faviconFilePath)
+    : undefined
 );
