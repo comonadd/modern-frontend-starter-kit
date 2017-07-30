@@ -20,7 +20,7 @@ const buildWebpackConfig = require('./build_webpack_config');
  *
  * @return {undefined}
  */
-module.exports = buildMode => new Promise(resolve => {
+module.exports = buildMode => new Promise((resolve) => {
   process.env.NODE_ENV = config.buildMode[buildMode].nodeEnv;
 
   const webpackConfig = buildWebpackConfig(buildMode);
@@ -33,7 +33,10 @@ module.exports = buildMode => new Promise(resolve => {
       webpack(webpackConfig, (err, stats) => {
         if (!err) {
           /* All is good. There were no errors */
-          const statsStr = stats.toString({chunks: false, colors: true});
+          const statsStr = stats.toString({
+            chunks: false,
+            colors: true,
+          });
 
           logger.log('info', `webpack:\n\n${statsStr}`);
 
