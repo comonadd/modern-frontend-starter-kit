@@ -5,4 +5,5 @@
 
 const webpack = require('webpack');
 
-module.exports = _ => new webpack.NoEmitOnErrorsPlugin();
+module.exports = _ =>
+  new webpack.NoEmitOnErrorsPlugin();

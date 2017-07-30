@@ -7,19 +7,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = require('../../config');
 
-const minifyOption = buildModeConfig =>
+const minifyOption = buildModeConfig => (
   buildModeConfig.minimize
     ? {
       removeRedundantAttributes: true,
       removeEmptyAttributes: true,
       removeComments: true,
-      quoteCharacter: "'",
+      quoteCharacter: '\'',
       collapseWhitespace: true,
       caseSensitive: false,
       collapseBooleanAttributes: true,
       collapseInlineTagWhitespace: true,
-    }
-    : false;
+    } : false
+);
 
 module.exports = buildModeConfig =>
   new HtmlWebpackPlugin({

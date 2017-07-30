@@ -3,6 +3,7 @@
  * @author Dmitry Guzeev <dmitry.guzeev@yahoo.com>
  */
 
-const {CheckerPlugin} = require('awesome-typescript-loader');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 
-module.exports = _ => new CheckerPlugin();
+module.exports = _ =>
+  new CheckerPlugin();
