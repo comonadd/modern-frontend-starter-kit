@@ -37,7 +37,6 @@ module.exports = buildModeConfig => ({
     {
       loader: 'awesome-typescript-loader',
       options: {
-        reportFiles: ['src/**/*.{ts,tsx}'],
         configFileName: buildModeConfig.tsConfigFilePath,
       },
     },
